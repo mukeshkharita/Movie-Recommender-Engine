@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Movie Recommender</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="static/assets/css/bootstrap.min.css">
+
+
+        <link rel="stylesheet" href="static/assets/css/plugins.css" />
+        <link rel="stylesheet" href="static/assets/css/magnific-popup.css">
+        
+        <link rel="stylesheet" href="static/assets/css/nexa-web-font.css" />
+        <link rel="stylesheet" href="static/assets/css/opensans-web-font.css" />
+
+        <link rel="stylesheet" href="static/assets/css/style.css">
+
+        <link rel="stylesheet" href="static/assets/css/responsive.css" />
+
+        <script src="static/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+         <style>
+  .modal-header, h4, .close {
+      background-color: #555555;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  #myModal{
+    background-color: rgba(0,0,0,0.5);
+    padding-top: 100px;
+
+  }
+   #myModal1{
+    background-color: rgba(0,0,0,0.5);
+    padding-top: 50px;
+
+  }
+  
+  </style>
+</head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        {% if name is defined %}
+						    <li><a href="/recommendation">{{name}}</a></li>
+						{% else %}
+						    <li><a id="myBtn1">{{name}}Sign Up</a></li>
+						{% endif %}
+						{% if name is defined %}
+						    <li><a href="/logout">Logout</a></li>
+						{% else %}
+						    <li><a id="myBtn">Sign In</a></li>
+						{% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <script src="static/assets/js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="static/assets/js/vendor/bootstrap.min.js"></script>
+
+        <script src="static/assets/js/plugins.js"></script>
+        <script src="static/assets/js/jquery.magnific-popup.js"></script>
+
+         
+        <script src="static/assets/js/main.js"></script>
+        <script>
+$(document).ready(function(){
+    $("#myBtn").click(function(){
+        $("#myModal").modal();
+    });
+    $("#myBtn1").click(function(){
+        $("#myModal1").modal();
+    });
+});
+</script>
+    </body>
+</html>

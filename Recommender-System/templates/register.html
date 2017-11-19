@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Signup</title>
+		<script src = {{url_for('static', filename='js/jquery.min.js')}} type = "text/javascript"> </script>
+		<link rel="stylesheet" href={{url_for('static', filename='css/register.css')}}>
+		<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		{% with messages = get_flashed_messages() %}
+		  {% if messages %}
+		    <ul class=flashes>
+		    {% for message in messages %}
+		      <li>{{ message }}</li>
+		    {% endfor %}
+		    </ul>
+		  {% endif %}
+		{% endwith %}
+		<div class="form">
+			<ul class="tab-group">
+				<li class="tab active"><a href="#signup">Sign Up</a></li>
+				<li class="tab"><a href="#login">Log In</a></li>
+			</ul>
+
+			<div class="tab-content">
+				<div id="signup">   
+					<h1>Sign Up for Movie Rating and Recommendation</h1>
+ 					<form action="/register" method="post">
+
+						<div class="top-row">
+							<div class="field-wrap">
+								<label>
+									Name
+									<span class="req">*</span>
+								</label>
+								<input type="text" required name="name" autocomplete="off" />
+							</div>
+
+							<div class="field-wrap">
+								<label>
+									Username
+									<span class="req">*</span>
+								</label>
+								<input type="text" required name="username" autocomplete="off"/>
+							</div>
+						</div>
+
+						<div class="field-wrap">
+							<label>
+								Email Address<span class="req">*</span>
+							</label>
+							<input type="email" name="email" required autocomplete="off"/>
+						</div>
+
+						<div class="field-wrap">
+							<label>
+								Set A Password<span class="req">*</span>
+							</label>
+							<input type="password" name="password" required autocomplete="off"/>
+						</div>
+
+						<button type="submit" class="button button-block"/>Get Started</button>
+					</form>
+				</div>
+
+				<div id="login">   
+					<h1>Welcome Back!</h1>
+
+					<form action="/login" method="post">
+
+						<div class="field-wrap">
+							<label>
+								Username<span class="req">*</span>
+							</label>
+							<input type="text" name="username" required autocomplete="off"/>
+						</div>
+
+						<div class="field-wrap">
+							<label>
+								Password<span class="req">*</span>
+							</label>
+							<input type="password" name="password" required autocomplete="off"/>
+						</div>
+
+						<button class="button button-block"/>Log In</button>
+					</form>
+				</div>
+
+			</div>
+		      
+		</div>
+		<script src={{url_for('static', filename='js/register.js')}} type="text/javascript"></script>
+	</body>
+</html>

@@ -1,0 +1,371 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Movie Recommender</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="static/assets/css/bootstrap.min.css">
+
+
+        <link rel="stylesheet" href="static/assets/css/plugins.css" />
+		<link rel="stylesheet" href="static/assets/css/magnific-popup.css">
+		
+        <link rel="stylesheet" href="static/assets/css/nexa-web-font.css" />
+        <link rel="stylesheet" href="static/assets/css/opensans-web-font.css" />
+
+        <link rel="stylesheet" href="static/assets/css/style.css">
+
+        <link rel="stylesheet" href="static/assets/css/responsive.css" />
+
+        <script src="static/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+         <style>
+  .modal-header, h4, .close {
+      background-color: #555555;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  #myModal{
+  	background-color: rgba(0,0,0,0.5);
+  	padding-top: 100px;
+
+  }
+   #myModal1{
+  	background-color: rgba(0,0,0,0.5);
+  	padding-top: 50px;
+
+  }
+  
+  </style>
+    </head>
+    <body>
+        
+		<div class='preloader'><div class='loaded'>&nbsp;</div></div>
+		
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        {% if name is defined %}
+						    <li><a href="/recommendation">{{name}}</a></li>
+						{% else %}
+						    <li><a id="myBtn1">{{name}}Sign Up</a></li>
+						{% endif %}
+						{% if name is defined %}
+						    <li><a href="/logout">Logout</a></li>
+						{% else %}
+						    <li><a id="myBtn">Sign In</a></li>
+						{% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+<div class="container">
+
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form" action="/login" method="post">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+              <input type="text" name="username" class="form-control" id="usrname" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="password" class="form-control" name="password" id="psw" placeholder="Enter password">
+            </div>
+           
+              <button type="submit" class="btn btn-default btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+          </form>
+        </div>
+       
+      </div>
+      
+    </div>
+  </div> 
+</div>
+<div class="container">
+
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+    
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-lock"></span> SignUp</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form" action="/register" method="post">
+          	<div class="form-group">
+              <label for="name"><span class="glyphicon glyphicon-user"></span> Name</label>
+              <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" required>
+            </div>
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+              <input type="text" class="form-control" name="username" id="usrname" placeholder="Enter username" required>
+            </div>
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Email</label>
+              <input type="email" class="form-control" name="email" id="usrname" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="password" class="form-control" id="psw" name="password" placeholder="Enter password" required>
+            </div>
+           
+              <button type="submit" class="btn btn-default btn-block"><span class="glyphicon glyphicon-off"></span> SignUp</button>
+          </form>
+        </div>
+       
+      </div>
+      
+    </div>
+  </div> 
+</div>
+ 
+
+        <header id="home" class="home" >
+			<div class="overlay sections" style="background-color:rgba(0,0,0,0.8);">
+				<div class="container">
+					
+					<div class="row">
+						<div class="wrapper">
+							<div class="col-md-6 col-md-offset-3">
+								
+								<div class="home-details text-center">
+									
+									<div class="logo">
+										<img src="static/assets/images/logo2.png" alt="Logo Image" width="250px" />
+									</div>
+										
+									<div class="home-title">
+										<h1>HEY Want Some Recommendation? </h1>
+									</div>
+									
+									
+
+								</div>
+									
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </header>
+
+        <section id="about" class="about sections">
+            <div class="container">
+
+                <div class="row">
+                    <div class="wrapper">
+					
+                    	<div class="col-md-6">
+                    		<div class="about-photo">
+								<img src="static/assets/images/logo1.png" alt="About Image" width="400" />
+							</div>
+                    	</div>
+						
+						<div class="col-md-6">
+                    		<div class="heading about-content">
+								<h3>About this </h3>
+								<p>Movie Recommender is a type of recommendation system, where a user can get recommendation of the movies of his like and also the best rated movies.A user has to 
+							    first rate some those movies which he has already watched.</p>
+							
+							</div>
+                    	</div>
+						
+						
+						
+                    </div>
+                </div>
+				
+				
+				
+            </div>    
+        </section>
+		
+		
+		<!-- Sections -->
+        <section id="portfolio" class="portfolio">
+			<div class="overlay sections">
+				<div class="container">
+				
+					<div class="heading text-center">
+					
+					</div>
+					
+					<!-- Example row of columns -->
+					
+					<div class="row">
+						<div class="portfolio-wrapper">
+							<div class="portfolio-item">
+							
+								<div class="portfolio-details">
+									<a href="static/assets/images/portfolio/1.png" class="portfolio-img"><img src="static/assets/images/portfolio/11.jpg" alt="Portfolio" /></a>
+								</div>
+								
+							</div>
+								
+							<div class="portfolio-item">
+							
+								<div class="portfolio-details">
+									<a href="static/assets/images/portfolio/2.png" class="portfolio-img"><img src="static/assets/images/portfolio/12.jpg" alt="Portfolio" /></a>
+								</div>
+								
+							</div>
+
+							<div class="portfolio-item">
+							
+								<div class="portfolio-details">
+									<a href="static/assets/images/portfolio/3.png" class="portfolio-img"><img src="static/assets/images/portfolio/13.jpg" alt="Portfolio" /></a>
+								</div>
+								
+							</div>
+
+							<div class="portfolio-item">
+							
+								<div class="portfolio-details">
+									<a href="static/assets/images/portfolio/4.png" class="portfolio-img"><img src="static/assets/images/portfolio/14.jpg" alt="Portfolio" /></a>
+								</div>
+								
+							</div>
+
+							<div class="portfolio-item">
+							
+								<div class="portfolio-details">
+									<a href="static/assets/images/portfolio/5.png" class="portfolio-img"><img src="static/assets/images/portfolio/15.jpg" alt="Portfolio" /></a>
+								</div>
+								
+							</div>
+							
+							<div class="portfolio-item">
+							
+								<div class="portfolio-details">
+									<a href="static/assets/images/portfolio/6.png" class="portfolio-img"><img src="static/assets/images/portfolio/16.jpg" alt="Portfolio" /></a>
+								</div>
+								
+							</div>
+							<div class="portfolio-item">
+							
+								<div class="portfolio-details">
+									<a href="static/assets/images/portfolio/7.png" class="portfolio-img"><img src="static/assets/images/portfolio/17.jpg" alt="Portfolio" /></a>
+								</div>
+								
+							</div>
+							<div class="portfolio-item">
+							
+								<div class="portfolio-details">
+									<a href="static/assets/images/portfolio/8.png" class="portfolio-img"><img src="static/assets/images/portfolio/18.jpg" alt="Portfolio" /></a>
+								</div>
+								
+							</div>
+							<div class="portfolio-item">
+							
+								<div class="portfolio-details">
+									<a href="static/assets/images/portfolio/9.png" class="portfolio-img"><img src="static/assets/images/portfolio/19.jpg" alt="Portfolio" /></a>
+								</div>
+								
+							</div>
+							<div class="portfolio-item">
+							
+								<div class="portfolio-details">
+									<a href="static/assets/images/portfolio/10.png" class="portfolio-img"><img src="static/assets/images/portfolio/20.jpg" alt="Portfolio" /></a>
+								</div>
+								
+							</div>
+								
+							
+							<div class="scroll-down">
+								<h5>If want to contact? Scroll Down!</h5>
+								<a href="#contact"><i class="fa fa-angle-double-down"></i></a>
+							</div>
+							
+						</div>
+					</div>
+				</div> <!-- /container -->
+			</div>	
+        </section>
+		
+		<section id="contact" class="contact sections">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						<div class="contact-details text-center">
+						
+							<div class="contact-category">
+								<div class="mail">
+									<h5>Mail :</h5>
+									<h2>question@gmail.com</h2>
+								</div>
+							</div>
+							
+							<div class="contact-category">
+								<div class="phone">
+									<h5>Phone :</h5>
+									<h6>+9100000000000</h6>
+								</div>
+							</div>
+							
+							<div class="contact-category">
+								<div class="social">
+									<h5>Social Media :</h5>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-instagram"></i></a>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+    
+
+
+        <script src="static/assets/js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="static/assets/js/vendor/bootstrap.min.js"></script>
+
+        <script src="static/assets/js/plugins.js"></script>
+		<script src="static/assets/js/jquery.magnific-popup.js"></script>
+
+		 
+        <script src="static/assets/js/main.js"></script>
+        <script>
+$(document).ready(function(){
+    $("#myBtn").click(function(){
+        $("#myModal").modal();
+    });
+    $("#myBtn1").click(function(){
+        $("#myModal1").modal();
+    });
+});
+</script>
+    </body>
+</html>
