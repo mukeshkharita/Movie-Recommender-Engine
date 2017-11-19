@@ -20,9 +20,9 @@ def posterMovies():
 	for i in range(len(res)):
 		j = i + 638
 		print(res[j][1].split('(')[0].split(',')[0])
-		#2bb1779c
-		#cdb4a023
-		payload = {'apikey': "2bb1779c", 't': res[j][1].split('(')[0].split(',')[0]}
+		
+		
+		payload = {'apikey': "Your Key", 't': res[j][1].split('(')[0].split(',')[0]}
 		r = requests.get('http://www.omdbapi.com', params = payload)
 		print(j)
 		json_data = r.json()
