@@ -1,7 +1,7 @@
 import MySQLdb
 import requests
 
-db = MySQLdb.connect(host="localhost",user="root",passwd="justgoogleit",db="movie_data_100k")
+db = MySQLdb.connect(host="localhost",user="root",passwd="YOUR_DB_PASSWPRd",db="DB_NAME")
 cur = db.cursor()
 
 def push(poster,id):
