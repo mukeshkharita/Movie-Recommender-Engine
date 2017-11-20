@@ -8,7 +8,7 @@ class Popularity_Recommender():
 
 	def loadData(self):
 		print('Loading Data')
-		db = MySQLdb.connect(host="localhost",user="root",passwd="justgoogleit",db="movie_data_100k")
+		db = MySQLdb.connect(host="localhost",user="root",passwd="YPUR_DB_PASSWORD",db="DB_NAME")
 		users = graphlab.SFrame.from_sql(db, "Select * from users")
 		ratings = graphlab.SFrame.from_sql(db, "Select * from ratings")
 		movies = graphlab.SFrame.from_sql(db, "select * from movies")
