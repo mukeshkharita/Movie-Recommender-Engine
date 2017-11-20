@@ -9,7 +9,7 @@ from math import sqrt
 import sys
 from sklearn.metrics import mean_squared_error
 
-db = MySQLdb.connect(host="localhost",user="root",passwd="justgoogleit",db="movie_data_100k")
+db = MySQLdb.connect(host="localhost",user="root",passwd="YOUR_DB_PASSWORD",db="DB_NAME")
 cur = db.cursor()
 users = 945
 items = 1682
