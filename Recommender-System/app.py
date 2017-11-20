@@ -6,7 +6,7 @@ import MySQLdb
 import hashlib
 import Recommender.popularity_recommender as recommender
 
-db = MySQLdb.connect(host="localhost",user="root",passwd="justgoogleit",db="movie_data_100k")
+db = MySQLdb.connect(host="localhost",user="root",passwd="YOUR_DB_PASSWORD",db="DB_NAME")
 cur = db.cursor()
 
 app = Flask(__name__)
