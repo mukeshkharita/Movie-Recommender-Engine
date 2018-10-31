@@ -5,16 +5,16 @@ import json
 import MySQLdb
 import hashlib
 import Recommender.popularity_recommender as recommender
+import os
 
 db = MySQLdb.connect(host="localhost",user="root",passwd="YOUR_DB_PASSWORD",db="DB_NAME")
 cur = db.cursor()
 
 app = Flask(__name__)
 
-app.config.update(
-    DEBUG = True,
-    SECRET_KEY = 'secret_xxx'
-)
+app.config.from_pyfile(os.path.join(
+        os.path.dirname(os.path.realpath(__file__)),  'config.py'
+    ))
 
 @app.route('/')
 def index():
